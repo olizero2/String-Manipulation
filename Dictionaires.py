@@ -1,4 +1,16 @@
 from csv import excel
+import time
+
+
+HEADER = '\033[95m'
+OKBLUE = '\033[94m'
+OKCYAN = '\033[96m'
+OKGREEN = '\033[92m'
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+ENDC = '\033[0m'
+BOLD = '\033[1m'
+UNDERLINE = '\033[4m'
 
 Players = {
     "oli": {
@@ -31,12 +43,12 @@ while True:
     except KeyError:
         print("Doesnt exist.")
 
-itemtogift = input(f"What would you want to gift {plrtogift}?: ")
+itemtogift = input(f"What would you want to gift {plrtogift}?: ").lower()
 print()
 print(f"Nice, you've chosen to give {plrtogift} a {itemtogift}! ")
 print()
 
-itemsvalue = input(f"What would you want the {itemtogift} Value to be?: ")
+itemsvalue = input(f"What would you want the {itemtogift} Value to be?: ").lower()
 print()
 
 Players[plrtogift][itemtogift] = itemsvalue
@@ -50,6 +62,8 @@ while True:
         delitem = input("What would you like to delete?: ").lower()
         del Players[plrtogift][delitem]
         print()
+        print(f"Okay well you decided to get rid of his {delitem}..")
+        print()
         break
     except KeyError:
         print("Doesnt exist.")
@@ -62,6 +76,11 @@ while True:
     except KeyError:
         print("Doesnt exist.")
 
+try:
+    STARTHEALTH = Players[plrtodamage]["health"]
+except:
+    print("i dont think that exists")
+
 while True:
     try:
         damageamount = int(input(f"How much do you want to damage {plrtodamage}?: "))
@@ -70,11 +89,88 @@ while True:
     except ValueError:
         print("Not a number.")
 
-Players[plrtodamage]["Health"] -= damageamount
+Players[plrtodamage]["health"] -= damageamount
 
-print(f"Damaged {plrtodamage} with a damage of {damageamount},  their health is now {Players[plrtodamage]['Health']}")
+print(f"Damaged {plrtodamage} with a damage of {damageamount},  their health is now {Players[plrtodamage]['health']}")
 
 print()
 
 print(f"Their full stats are now {Players[plrtodamage]}")
+print("""
 
+""")
+
+time.sleep(1)
+print(f"Lets check if they are still alive.")
+time.sleep(1)
+print(f"Lets check if they are still alive..")
+time.sleep(1)
+print(f"Lets check if they are still alive...")
+
+print("""
+
+""")
+time.sleep(2)
+
+print(f"So you've decided to attack {plrtodamage}.")
+time.sleep(1)
+print(f"So you've decided to attack {plrtodamage}..")
+time.sleep(1)
+print(f"So you've decided to attack {plrtodamage}...")
+print("""
+
+""")
+
+time.sleep(2)
+
+
+print(f"His starting health was {STARTHEALTH}.")
+time.sleep(1)
+print(f"His starting health was {STARTHEALTH}..")
+time.sleep(1)
+print(f"His starting health was {STARTHEALTH}...")
+print("""
+
+""")
+
+
+time.sleep(2)
+
+
+print(f"The damage you dealt was {damageamount}.")
+time.sleep(1)
+print(f"The damage you dealt was {damageamount}..")
+time.sleep(1)
+print(f"The damage you dealt was {damageamount}...")
+print("""
+
+""")
+
+time.sleep(2)
+
+print(f"If we do the math.. {STARTHEALTH} - {damageamount} equals.")
+time.sleep(1)
+print(f"If we do the math.. {STARTHEALTH} - {damageamount} equals..")
+time.sleep(1)
+print(f"If we do the math.. {STARTHEALTH} - {damageamount} equals...")
+print("""
+
+""")
+
+time.sleep(2)
+
+
+
+endhealth = STARTHEALTH - damageamount
+
+print(f"{endhealth}.")
+print("""
+
+""")
+
+time.sleep(2)
+
+if endhealth < 0:
+    print(f"{WARNING}Hes dead.")
+else:
+    print(f"{OKGREEN}Hes alive.")
